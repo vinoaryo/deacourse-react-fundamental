@@ -69,7 +69,7 @@ const Collections = () => {
           return (
             <Carousel.Item key={i}>
               <img
-                className="d-block w-100 carousel-img"
+                className="d-flex w-100 carousel-img"
                 src={data.url}
                 alt="img"
               />

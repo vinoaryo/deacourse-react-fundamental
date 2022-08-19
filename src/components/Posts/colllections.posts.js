@@ -3,7 +3,8 @@ import axios from "axios";
 import { ButtonGroup } from "react-bootstrap";
 import Loaders from "../Utils/loaders";
 import Modals from "../Utils/modal";
-import './collections.posts.css';
+import "./collections.posts.css";
+import Selects from "../Utils/selects";
 
 const Collections = () => {
   // {
@@ -23,7 +24,7 @@ const Collections = () => {
       setLoading(true);
       axios({
         method: "GET",
-        url: `${process.env.REACT_APP_POSTURL}/?_limit=${limit}`,
+        url: `${process.env.REACT_APP_POSTURL}?_limit=${limit}`,
       })
         .then((result) => {
           setDatas(result.data);
@@ -53,7 +54,9 @@ const Collections = () => {
       <p>
         Fetching iamage API from <a href={url}>{url}</a>
       </p>
-      <p className="limit">Currently showing <bold>{limit}</bold></p>
+      <p className="limit">
+        Currently showing <bold>{limit}</bold>
+      </p>
       {datas.map((data, i) => {
         return (
           <div key={i} className="">
@@ -61,25 +64,20 @@ const Collections = () => {
               title={data.title}
               description={data.body}
               id={data.id}
+              userID={data.userId}
             />
           </div>
         );
       })}
       <ButtonGroup className="d-flex justify-content-center align-items-center m-2">
         {limit > 1 ? (
-          <button
-            className="btn btn-danger"
-            onClick={() => handleLimit("-")}
-          >
+          <button className="btn btn-danger" onClick={() => handleLimit("-")}>
             -
           </button>
         ) : (
           ""
         )}
-        <button
-          className="btn btn-primary"
-          onClick={() => handleLimit("+")}
-        >
+        <button className="btn btn-primary" onClick={() => handleLimit("+")}>
           +
         </button>
       </ButtonGroup>

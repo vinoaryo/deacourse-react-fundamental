@@ -6,9 +6,11 @@ import {
   MDBModalContent,
   MDBModalHeader,
   MDBModalBody,
+  MDBModalFooter,
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
+  MDBCardFooter,
 } from "mdb-react-ui-kit";
 
 const Modals = (props) => {
@@ -17,19 +19,20 @@ const Modals = (props) => {
   const toggleShow = () => setCentredModal(!centredModal);
   return (
     <>
-        <MDBCard className="m-2">
-          <MDBCardBody>
-            <MDBCardTitle>{props.title}</MDBCardTitle>
-            <MDBBtn color="primary" onClick={toggleShow}>Show Details</MDBBtn>
-          </MDBCardBody>
-        </MDBCard>
+      <MDBCard className="m-2">
+        <MDBCardBody>
+          <MDBCardTitle>{props.title}</MDBCardTitle>
+          <MDBBtn color="primary" onClick={toggleShow}>
+            Show Details
+          </MDBBtn>
+        </MDBCardBody>
+      </MDBCard>
       <MDBModal tabIndex="-1" show={centredModal} setShow={setCentredModal}>
         <MDBModalDialog centered>
           <MDBModalContent>
             <MDBModalHeader>
-              <MDBCardTitle>{props.id}. {props.title}</MDBCardTitle>
               <MDBBtn
-                className="btn-close"
+                className="btn btn-close btn-danger"
                 color="none"
                 onClick={toggleShow}
               ></MDBBtn>
@@ -37,6 +40,9 @@ const Modals = (props) => {
             <MDBModalBody>
               <p>{props.description}</p>
             </MDBModalBody>
+            <MDBModalFooter>
+                <MDBCardFooter>Post ID: {props.id}, User ID: {props.userID}</MDBCardFooter> 
+            </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>
