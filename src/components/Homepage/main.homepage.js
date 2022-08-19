@@ -4,7 +4,7 @@ import './main.homepage.css';
 const Homepage = () => {
   return (
     <Fragment>
-      <div clasName="root">
+      <div clasName="roothome">
 
       </div>
     </Fragment>
